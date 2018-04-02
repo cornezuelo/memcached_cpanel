@@ -8,18 +8,34 @@ $cache->addServer($host, $port);
 $result = '';
 //DELETE
 if (isset($_REQUEST['del']) && !empty($_REQUEST['del'])) {
-	
+	$extra = '';
+	if ($delete_tags === true && strpos($_REQUEST['del'], 'tag!') === 0) {
+		$get = $cache->get($_REQUEST['del']);
+		if (is_array($get)) {
+			$extra .= '<p>This key was detected as a <b>tag</b>, we tried to delete also the following keys:<ul>';
+			foreach ($get as $key) {
+				$r2 = $cache->delete($key);
+				if ($r2) {
+					$color = 'green';
+				} else {
+					$color = 'red';
+				}
+				$extra .= '<li><span style="color:'.$color.'">'.$key.'</li>';
+			}			
+			$extra .= '</ul></p>';
+		}
+	}	
 	$r = $cache->delete($_REQUEST['del']);	
 	if ($r) {
 		$result = '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> The key \''.$_REQUEST['del'].'\' was deleted succesfully.
+  <strong>Success!</strong> The key \''.$_REQUEST['del'].'\' was deleted succesfully.'.$extra.'
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
 	} else {
 		$result = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error!</strong> We weren\'t able to delete the key \''.$_REQUEST['del'].'\'.
+  <strong>Error!</strong> We weren\'t able to delete the key \''.$_REQUEST['del'].'\'.'.$extra.'
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
