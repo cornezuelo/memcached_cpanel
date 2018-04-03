@@ -35,7 +35,7 @@ if (isset($_REQUEST['del']) && !empty($_REQUEST['del'])) {
 </div>';
 	} else {
 		$result = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error!</strong> We weren\'t able to delete the key \''.$_REQUEST['del'].'\'.'.$extra.'
+  <strong>Error!</strong> We weren\'t able to delete the key \''.$_REQUEST['del'].'\'. Error Result Code '.$r->getResultCode().'. '.$extra.'
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -53,7 +53,7 @@ if (isset($_REQUEST['del']) && !empty($_REQUEST['del'])) {
 </div>';
 	} else {
 		$result = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error!</strong> We couldn\'t get the key \''.$_REQUEST['del'].'\'.
+  <strong>Error!</strong> We couldn\'t get the key \''.$_REQUEST['info'].'\' Error Result Code '.$r->getResultCode().'.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
