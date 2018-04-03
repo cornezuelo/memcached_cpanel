@@ -12,17 +12,17 @@ if (isset($_REQUEST['del']) && !empty($_REQUEST['del'])) {
 	if ($delete_tags === true && strpos($_REQUEST['del'], 'tag!') === 0) {
 		$get = $cache->get($_REQUEST['del']);
 		if (is_array($get)) {
-			$extra .= '<p>This key was detected as a <b>tag</b>, we tried to delete also the following keys:<ul>';
+			$extra .= ' <p>This key was detected as a <b>tag</b>, we tried to delete also the following keys:<ul>';
 			foreach ($get as $key) {
 				$r2 = $cache->delete($key);
 				if ($r2) {
 					$color = 'green';
-					$extra = 'OK';
+					$extra2 = 'OK';
 				} else {
 					$color = 'red';
-					$extra = 'Error Result Code '.$cache->getResultCode();
+					$extra2 = 'Error Result Code '.$cache->getResultCode();
 				}
-				$extra .= '<li><span style="color:'.$color.'"><b>'.$key.':</b> '.$extra.'</li>';
+				$extra .= '<li><span style="color:'.$color.'"><b>'.$key.':</b> '.$extra2.'</li>';
 			}			
 			$extra .= '</ul></p>';
 		}
