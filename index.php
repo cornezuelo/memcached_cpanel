@@ -47,8 +47,21 @@
 				  }
 				?>
 			  </tbody>
-			</table>	  
-        </div>
+			</table>	
+		  <br>
+		  <h4>Key</h4>                    
+		  <hr>		  			  
+			<form class="form-inline">									
+				<div class="form-group mb-2">
+					<label for="key-form" class="sr-only">Key</label>
+					<input type="text" class="form-control" id="key-form" value="" placeholder="Key">
+				</div>
+				&nbsp;				
+				<button type="button" class="btn btn-primary" onclick="get_form()">Get</button></a>
+				&nbsp;
+				<button type="button" class="btn btn-danger" onclick="borrar_form()">Delete</button></td>					
+			</form>		  
+		  </div>
       </div>      
     </div>  
 
@@ -63,7 +76,16 @@
 		$(document).ready( function () {
 			$('#mainTable').DataTable();
 		} );
-		function borrar(key) {			
+		function borrar_form() {
+			var r = confirm("Are you sure that you want to delete the key '"+$('#key-form').val()+"'?");
+			if (r == true) {
+				window.location.href = 'index.php?del='+$('#key-form').val();
+			}
+		}
+		function get_form() {
+			window.location.href = 'index.php?info='+$('#key-form').val();
+		}
+		function borrar(key) {						
 			var r = confirm("Are you sure that you want to delete the key '"+key+"'?");
 			if (r == true) {
 				window.location.href = 'index.php?del='+key;
