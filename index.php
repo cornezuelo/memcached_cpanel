@@ -51,7 +51,7 @@
 		  <br>
 		  <h4>Key</h4>                    
 		  <hr>		  			  
-			<form class="form-inline">									
+			<form class="form-inline" onsubmit="get_form()">									
 				<div class="form-group mb-2">
 					<label for="key-form" class="sr-only">Key</label>
 					<input type="text" class="form-control" id="key-form" value="" placeholder="Key">
