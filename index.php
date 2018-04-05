@@ -51,15 +51,15 @@
 		  <br>
 		  <h4>Key</h4>                    
 		  <hr>		  			  
-			<form class="form-inline" onsubmit="get_form()">									
+			<form class="form-inline" id="main-form">									
 				<div class="form-group mb-2">
 					<label for="key-form" class="sr-only">Key</label>
 					<input type="text" class="form-control" id="key-form" value="" placeholder="Key">
 				</div>
 				&nbsp;				
-				<button type="button" class="btn btn-primary" onclick="get_form()">Get</button></a>
+				<button type="button" class="btn btn-primary" onclick="get_form()">Get</button>
 				&nbsp;
-				<button type="button" class="btn btn-danger" onclick="borrar_form()">Delete</button></td>					
+				<button type="button" class="btn btn-danger" onclick="borrar_form()">Delete</button>					
 			</form>		  
 		  </div>
       </div>      
@@ -76,6 +76,10 @@
 		$(document).ready( function () {
 			$('#mainTable').DataTable();
 		} );
+		$( "#main-form" ).submit(function( event ) {
+			get_form();
+			event.preventDefault();
+		});
 		function borrar_form() {
 			var r = confirm("Are you sure that you want to delete the key '"+$('#key-form').val()+"'?");
 			if (r == true) {
