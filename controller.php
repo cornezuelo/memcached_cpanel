@@ -1,4 +1,9 @@
 <?php
+//Fix, init conf.php
+if (!file_exists('conf.php') && file_exists('conf.php.default')) {
+	copy('conf.php.default','conf.php');
+}
+
 include 'func.php';
 include 'conf.php';
 

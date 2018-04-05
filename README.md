@@ -2,7 +2,7 @@
 A simple, lightweight, responsive control panel for memcached to perform basic operations over keys (Get and delete)
 
 # Configuration
-Make a copy of conf.php.default to conf.php
+Make a copy of conf.php.default to conf.php, or run index.php and it will be autocopied.
 
 You can configure your host and port (localhost and 11211 by default) in the conf.php file, and you're ready to go!
 
