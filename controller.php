@@ -10,6 +10,11 @@ include 'conf.php';
 $cache = new \Memcached();	
 $cache->addServer($host, $port);	
 
+$statuses = $cache->getStats();
+if ($statuses[$host.':'.$port]['pid'] <= 0) {
+	die('Connection error to '.$host.':'.$port);
+} 
+
 $result = '';
 //DELETE
 if (isset($_REQUEST['del']) && !empty($_REQUEST['del'])) {

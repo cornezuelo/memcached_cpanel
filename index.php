@@ -64,7 +64,9 @@
 		  </div>
       </div>      
     </div>  
-
+<?php if (isset($host) && isset($port)) {
+	echo '<p align="right">'.$host.':'.$port.'</p>';
+} ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/fontawesome.all.js"></script>
